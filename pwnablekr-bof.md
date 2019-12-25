@@ -83,7 +83,7 @@ Let's find the offset now.
 Let's fire up PEDA!
 
 ```bash
-root@pwn4magic]:~/Desktop/bof# gdb -q bof
+[root@pwn4magic]:~/Desktop/bof# gdb -q bof
 Reading symbols from bof...
 (No debugging symbols found in bof)
 gdb-peda$ info functions
