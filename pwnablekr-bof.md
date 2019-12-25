@@ -111,7 +111,7 @@ Non-debugging symbols:
 gdb-peda$ 
 ```
 
-We can the functions there `func` & `main`. Let's disassemble func.
+We can see the functions there `func` & `main`. Let's disassemble func.
 
 ```assembly
 gdb-peda$ disassemble func
