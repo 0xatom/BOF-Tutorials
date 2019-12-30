@@ -78,7 +78,7 @@ We have a buffer there `char overflowme[32];` 32bytes and it tells us if `key ==
 
 Let's find the offset now.
 
-# Exploitation
+# 0x02 Exploitation
 
 Let's fire up PEDA!
 
